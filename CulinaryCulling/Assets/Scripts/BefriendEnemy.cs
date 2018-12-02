@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class BefriendEnemy : MonoBehaviour {
     public GameObject net;
@@ -27,9 +28,13 @@ public class BefriendEnemy : MonoBehaviour {
     public List<GameObject> combine;
     public bool chooseToCook;
 
+    public int health;
+    public UnityEngine.UI.Text healthDisplay;
+
     // Use this for initialization
     void Start()
     {
+        health = 10;
         net.GetComponent<Rigidbody>().useGravity = false;
         numberOfFriends = 0;
         netWithPlayer = true;
@@ -50,7 +55,7 @@ public class BefriendEnemy : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
+        healthDisplay.text = "Health: " + health;
         if (Input.GetKeyDown(KeyCode.E)&&netWithPlayer)
         {
             //Debug.Log("E");
@@ -114,6 +119,12 @@ public class BefriendEnemy : MonoBehaviour {
             deactivateText();
             cook();
         }
+
+        else if (Input.GetKeyDown(KeyCode.V) && chooseToCook)
+        {
+            deactivateText();
+            cookHealth();
+        }
         if (chooseToCook)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -128,6 +139,18 @@ public class BefriendEnemy : MonoBehaviour {
             {
                 combine.Add(friends[2]);
             }
+        }
+        if (chooseToCook)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+        if (health <= 0)
+        {
+            playerDies();
         }
     }
 
@@ -178,6 +201,7 @@ public class BefriendEnemy : MonoBehaviour {
         }
         if (toRemove != 3)
         {
+            friendPlaceholder.GetComponent<EnemyAI>().beFriended = true;
             friends.Add(friendPlaceholder);
             //set enemy friendly
             friendPlaceholder = null;
@@ -211,6 +235,7 @@ public class BefriendEnemy : MonoBehaviour {
         }
         else
         {
+            newFriend.GetComponent<EnemyAI>().beFriended = true;
             friends.Add(newFriend);
             //set enemy friendly
             resetNet(2f);
@@ -240,9 +265,65 @@ public class BefriendEnemy : MonoBehaviour {
                 //combine.Clear();
                 combine = new List<GameObject>();
                 Instantiate(abom,abomPos, Quaternion.Euler(abomRot));
+                chooseToCook = false;
+                return;
             }
         }
+        chooseToCook = false;
         //call function in recipe: compare them
         //if the function returns true: destroy all objects in combine, instantiate abomination at position of first combine object
+    }
+
+    public void cookHealth()
+    {
+        int healthLength = 0;
+        switch (combine.Count)
+        {
+            case 1:
+                healthLength = 2;
+                break;
+            case 2:
+                healthLength = 3;
+                break;
+            case 3:
+                healthLength = 5;
+                break;
+        }
+        foreach (GameObject ingredient in combine.ToList())
+        {
+            Destroy(ingredient);
+        }
+        if (health + healthLength > 10)
+        {
+            health = 10;
+        }
+        else
+        {
+            health += healthLength;
+        }
+        chooseToCook = false;
+    }
+
+    public void playerDies()
+    {
+        health = 0;
+        SceneManager.LoadScene("GameScene");
+    }
+
+    //private void OnTriggerEnter(Collider collision)
+    //{
+    //    Debug.Log("IN");
+    //    if (collision.gameObject.tag == "Enemy")
+    //    {
+    //        health--;
+    //    }
+    //}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            health--;
+        }
     }
 }

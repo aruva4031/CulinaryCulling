@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour {
 
@@ -14,6 +15,8 @@ public class EnemyAI : MonoBehaviour {
 	public bool beFriended = false;
 
 	public enum OccilationFuntion {Sine, Cosine}
+
+    public float highestTransitionLevel;
 
 	// Transform  TomatoTrans;
 	// public bool grounded = true;
@@ -30,7 +33,10 @@ public class EnemyAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
 	}
 
 	void FixedUpdate()

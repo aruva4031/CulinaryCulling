@@ -20,7 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4670624166991304}
   - component: {fileID: 65308151712608024}
+  - component: {fileID: 114571029505597952}
   - component: {fileID: 212049390962036126}
+  - component: {fileID: 65289093808024982}
   m_Layer: 0
   m_Name: Jalapeno
   m_TagString: Enemy
@@ -35,12 +37,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1340731031508290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.764, y: -2.1, z: 0.06}
+  m_LocalPosition: {x: 7.216671, y: -1.6130692, z: 0.06}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65289093808024982
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1340731031508290}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.71187, y: 28.357056, z: 1.0000001}
+  m_Center: {x: -1.1369324, y: 3.0115473, z: 0.000000037252903}
 --- !u!65 &65308151712608024
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -53,6 +67,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.095971, y: 27.392815, z: 1.0000001}
   m_Center: {x: -0.775342, y: 2.5294268, z: 0.000000037252903}
+--- !u!114 &114571029505597952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1340731031508290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba81053451c0b748a24949019666733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  speed: 0
+  strt: {x: 0, y: 0, z: 0}
+  nd: {x: 0, y: 0, z: 0}
+  beFriended: 0
+  highestTransitionLevel: 0
 --- !u!212 &212049390962036126
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212774669895932126}
   - component: {fileID: 136995735980596388}
   - component: {fileID: 114918063874887614}
+  - component: {fileID: 114711960411752100}
   m_Layer: 0
   m_Name: TomatoSauce
   m_TagString: Enemy
@@ -36,12 +37,29 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1280688522936530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.764, y: -2.37, z: 0.06}
+  m_LocalPosition: {x: 25.164938, y: -1.7976441, z: 0.06}
   m_LocalScale: {x: 0.06958579, y: 0.069585785, z: 0.034792893}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114711960411752100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1280688522936530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba81053451c0b748a24949019666733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  speed: 0
+  strt: {x: 0, y: 0, z: 0}
+  nd: {x: 0, y: 0, z: 0}
+  beFriended: 0
+  highestTransitionLevel: 0
 --- !u!114 &114918063874887614
 MonoBehaviour:
   m_ObjectHideFlags: 1

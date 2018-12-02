@@ -20,7 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4070657911627012}
   - component: {fileID: 65076377949518612}
+  - component: {fileID: 114626475920249224}
   - component: {fileID: 212467732492535384}
+  - component: {fileID: 65122070060066620}
   m_Layer: 0
   m_Name: Bread
   m_TagString: Enemy
@@ -35,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1634665205691310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.764, y: -1.9, z: 0.06}
+  m_LocalPosition: {x: 0.82, y: -1.5, z: 0.06}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,6 +55,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 17.839638, y: 20.049284, z: 1}
   m_Center: {x: 0.9908277, y: 0.19921541, z: 0}
+--- !u!65 &65122070060066620
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1634665205691310}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 23.064823, y: 22.177813, z: 1}
+  m_Center: {x: 0.8118105, y: 1.2634802, z: 0}
+--- !u!114 &114626475920249224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1634665205691310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba81053451c0b748a24949019666733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  speed: 0
+  strt: {x: 0, y: 0, z: 0}
+  nd: {x: 0, y: 0, z: 0}
+  beFriended: 0
+  highestTransitionLevel: 0
 --- !u!212 &212467732492535384
 SpriteRenderer:
   m_ObjectHideFlags: 1

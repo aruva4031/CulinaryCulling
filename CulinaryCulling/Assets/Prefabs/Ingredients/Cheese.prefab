@@ -20,7 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4408318357825856}
   - component: {fileID: 65525560249545896}
+  - component: {fileID: 114346361908793390}
   - component: {fileID: 212107011047375744}
+  - component: {fileID: 65686134981914448}
   m_Layer: 0
   m_Name: Cheese
   m_TagString: Enemy
@@ -35,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1632019369605870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.764, y: -2.1, z: 0.06}
+  m_LocalPosition: {x: -2.8, y: -1.3, z: 0.06}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,6 +55,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 27.417183, y: 19.06607, z: 1.0000001}
   m_Center: {x: -0.10919571, y: 0.36446273, z: 0.000000037252903}
+--- !u!65 &65686134981914448
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632019369605870}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 45.699043, y: 32.495525, z: 1.0000001}
+  m_Center: {x: -6.418376, y: 0.92120767, z: 0.000000037252903}
+--- !u!114 &114346361908793390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632019369605870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba81053451c0b748a24949019666733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  speed: 0
+  strt: {x: 0, y: 0, z: 0}
+  nd: {x: 0, y: 0, z: 0}
+  beFriended: 0
+  highestTransitionLevel: 0
 --- !u!212 &212107011047375744
 SpriteRenderer:
   m_ObjectHideFlags: 1

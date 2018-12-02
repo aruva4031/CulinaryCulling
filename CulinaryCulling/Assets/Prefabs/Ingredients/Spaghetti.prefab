@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4592832229899488}
   - component: {fileID: 65600354245424772}
   - component: {fileID: 212560129513380428}
+  - component: {fileID: 65321610579019230}
+  - component: {fileID: 114908041061339878}
   m_Layer: 0
   m_Name: Spaghetti
   m_TagString: Enemy
@@ -35,12 +37,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1441753406318222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.764, y: -1.9, z: 0.06}
+  m_LocalPosition: {x: 16.86449, y: -1.5277108, z: 0.06}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65321610579019230
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1441753406318222}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 36.284683, y: 22.4881, z: 1}
+  m_Center: {x: -2.2337966, y: 0.083966255, z: 0}
 --- !u!65 &65600354245424772
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -53,6 +67,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 33.85553, y: 21.383942, z: 1}
   m_Center: {x: -2.1233726, y: -0.46811342, z: 0}
+--- !u!114 &114908041061339878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1441753406318222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba81053451c0b748a24949019666733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  speed: 0
+  strt: {x: 0, y: 0, z: 0}
+  nd: {x: 0, y: 0, z: 0}
+  beFriended: 0
+  highestTransitionLevel: 0
 --- !u!212 &212560129513380428
 SpriteRenderer:
   m_ObjectHideFlags: 1

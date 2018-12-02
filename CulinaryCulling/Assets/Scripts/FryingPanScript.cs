@@ -116,12 +116,32 @@ public class FryingPanScript : MonoBehaviour {
         //}
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<EnemyAI>().health--;
+        }
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         if (!panWithPlayer&&!coroutine_running)
         {
             Debug.Log("NOOO2");
             StartCoroutine(returnPan(returnAmount));
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.transform.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<EnemyAI>().health-=1;
+            //if (collision.gameObject.GetComponent<EnemyAI>().health <= 0)
+            //{
+            //    Destroy(collision.gameObject);
+            //}
         }
     }
 

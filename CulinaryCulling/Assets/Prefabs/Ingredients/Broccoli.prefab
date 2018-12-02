@@ -20,8 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4687470171667434}
   - component: {fileID: 65759616906861414}
+  - component: {fileID: 114959244185376784}
   - component: {fileID: 212994332354691550}
   - component: {fileID: 65081062795805670}
+  - component: {fileID: 65325167937833388}
+  - component: {fileID: 65361100805750112}
   m_Layer: 0
   m_Name: Broccoli
   m_TagString: Enemy
@@ -36,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964874179813928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.764, y: -1.9, z: 0.06}
+  m_LocalPosition: {x: 8.1, y: -1.1, z: 0.06}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
@@ -54,6 +57,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 27.408707, y: 14.752043, z: 0.20000002}
   m_Center: {x: -0.49960732, y: 8.160211, z: 0}
+--- !u!65 &65325167937833388
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1964874179813928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.256965, y: 22.42492, z: 1}
+  m_Center: {x: 0.3788209, y: -3.3913279, z: 0}
+--- !u!65 &65361100805750112
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1964874179813928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 27.408707, y: 14.752043, z: 0.20000002}
+  m_Center: {x: -0.49960732, y: 8.160211, z: 0}
 --- !u!65 &65759616906861414
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -66,6 +93,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.3063183, y: 18.953707, z: 1}
   m_Center: {x: 0.3788185, y: -5.126934, z: 0}
+--- !u!114 &114959244185376784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1964874179813928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba81053451c0b748a24949019666733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  speed: 0
+  strt: {x: 0, y: 0, z: 0}
+  nd: {x: 0, y: 0, z: 0}
+  beFriended: 0
+  highestTransitionLevel: 0
 --- !u!212 &212994332354691550
 SpriteRenderer:
   m_ObjectHideFlags: 1
