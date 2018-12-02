@@ -19,14 +19,26 @@ public class NetScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        GetComponent<Rigidbody>().constraints= RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
-        if (other.GetComponent<Collider>().gameObject.tag == "Enemy")
+        Debug.Log("In Trigger");
+        //StartCoroutine(freezeConstraints());
+        if (other.GetComponent<Collider>().gameObject.tag == "Enemy"&& !player.GetComponent<BefriendEnemy>().friends.Contains((other.GetComponent<Collider>().gameObject)))
         {
+            Debug.Log("In Enemy");
             player.GetComponent<BefriendEnemy>().addFriend(other.GetComponent<Collider>().gameObject);
+            //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+            //player.GetComponent<PlayerController>().playerFreeze=true;
+            //player.GetComponent<BefriendEnemy>().resetNet(2f);
+            StartCoroutine(freezeConstraints());
         }
         else
         {
-            player.GetComponent<BefriendEnemy>().resetNet();
+            player.GetComponent<BefriendEnemy>().resetNet(0f);
         }
+    }
+
+    IEnumerator freezeConstraints()
+    {
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
     }
 }

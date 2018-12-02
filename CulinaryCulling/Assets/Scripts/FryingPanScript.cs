@@ -18,6 +18,7 @@ public class FryingPanScript : MonoBehaviour {
     bool panGone;
 
     public float timer;
+    public float directionAmount;
 
     // Use this for initialization
     void Start () {
@@ -25,6 +26,8 @@ public class FryingPanScript : MonoBehaviour {
         panWithPlayer = true;
         panRot = transform.rotation.eulerAngles;
         panGone = false;
+        timer = -1;
+        transform.position = new Vector3(panPos.transform.position.x, panPos.transform.position.y, transform.position.z);
     }
 
     // Update is called once per frame
@@ -35,35 +38,56 @@ public class FryingPanScript : MonoBehaviour {
         //    GetComponent<Rigidbody>().useGravity = false;
         //    tempTime = Time.time;
         //}
-        if (Input.GetMouseButtonUp(0) && ((Time.time - tempTime) < 0.2f)&&panWithPlayer&&!panGone)
+        if (panWithPlayer)
+        {
+            transform.position = new Vector3(panPos.transform.position.x, panPos.transform.position.y, transform.position.z);
+        }
+        if (Input.GetMouseButtonUp(0) && ((Time.time - tempTime) < 0.2f)&&panWithPlayer)
         {
             panWithPlayer = false;
             tempTime = Time.time;
             timer = Time.deltaTime;
             mousePoint.transform.position = Input.mousePosition;
+            direction = new Vector3(transform.position.x + directionAmount, transform.position.y + 3f, transform.position.z) - transform.position;
+            //if (GameObject.Find("Player").transform.rotation.eulerAngles.y <= 90|| GameObject.Find("Player").transform.rotation.eulerAngles.y >= 270)
+            //{
+            //    direction = new Vector3(transform.position.x + 2f, transform.position.y + 3f, transform.position.z) - transform.position;
+            //}
+            //else if (GameObject.Find("Player").transform.rotation.eulerAngles.y > 90 && GameObject.Find("Player").transform.rotation.eulerAngles.y < 270)
+            //{
+            //    direction = new Vector3(transform.position.x - 2f, transform.position.y + 3f, transform.position.z) - transform.position;
+            //}
             GetComponent<Rigidbody>().useGravity = true;
-            direction = new Vector3(transform.position.x + 2f, transform.position.y + 3f, transform.position.z) - transform.position;
-            GetComponent<Rigidbody>().AddForce(direction * direction.magnitude * 20);
+            GetComponent<Rigidbody>().AddForce(direction * direction.magnitude * 15);
             //StartCoroutine(waitForPan());
         }
-        else if (Input.GetMouseButton(0)&&panWithPlayer&& ((Time.time - tempTime) >= 0.1f)&&!panGone)
+        else if (Input.GetMouseButton(0)&&panWithPlayer&& ((Time.time - tempTime) >= 0.1f))
         {
             mousePoint.SetActive(true);
             Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = mousePoint.transform.position.z;
             mousePoint.transform.position = Vector3.MoveTowards(transform.position, target, 100f);
         }
-        if (Input.GetMouseButtonUp(0) && (Time.time - tempTime) >= 0.5f&&panWithPlayer&&!panGone)
+        if (Input.GetMouseButtonUp(0) && (Time.time - tempTime) >= 0.5f&&panWithPlayer)
         {
             panWithPlayer = false;
             Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = mousePoint.transform.position.z;
             mousePoint.transform.position = Vector3.MoveTowards(transform.position, target, 100f);
-            if (mousePoint.transform.position.x > transform.position.x)
+            Debug.Log("Angle: "+GameObject.Find("Player").transform.rotation.eulerAngles.y);
+            if ((directionAmount>0)&&(mousePoint.transform.position.x > transform.position.x))
             {
                 GetComponent<Rigidbody>().useGravity = true;
                 direction = new Vector3(transform.position.x + 2f + (mousePoint.transform.position.x * 0.2f), transform.position.y + 3f + (mousePoint.transform.position.y * 0.2f), transform.position.z) - transform.position;
-                GetComponent<Rigidbody>().AddForce(direction * direction.magnitude * 20);
+                GetComponent<Rigidbody>().AddForce(direction * direction.magnitude * 15);
+                //StartCoroutine(waitForPan());
+                mousePoint.SetActive(false);
+            }
+            else if (  (directionAmount<0) && (mousePoint.transform.position.x < transform.position.x))
+            {
+                GetComponent<Rigidbody>().useGravity = true;
+                direction = new Vector3(transform.position.x - 2f + (mousePoint.transform.position.x * 0.2f), transform.position.y + 3f + (mousePoint.transform.position.y * 0.2f), transform.position.z) - transform.position;
+                GetComponent<Rigidbody>().AddForce(direction * direction.magnitude * 15);
                 //StartCoroutine(waitForPan());
                 mousePoint.SetActive(false);
             }
@@ -77,15 +101,15 @@ public class FryingPanScript : MonoBehaviour {
         {
             timer = -1f;
         }
-        Debug.Log(((Time.deltaTime - timer) % 60));
-        if (((Time.deltaTime - timer)%60) >= 5f&&(timer!=-1f))
-        {
-            StartCoroutine(returnPan(returnAmount));
-        }
-        if (panGone && !panWithPlayer && !coroutine_running)
-        {
-            StartCoroutine(returnPan(returnAmount));
-        }
+        //Debug.Log("Secs: "+(Mathf.Abs(Time.deltaTime - timer) % 60));
+        //if (((Mathf.Abs(Time.deltaTime - timer))%60) >= 5f&&(timer!=-1f))
+        //{
+        //    StartCoroutine(returnPan(returnAmount));
+        //}
+        //if (panGone && !panWithPlayer && !coroutine_running)
+        //{
+        //    StartCoroutine(returnPan(returnAmount));
+        //}
         //else if (panGone && panWithPlayer)
         //{
         //    panGone = false;
@@ -100,6 +124,16 @@ public class FryingPanScript : MonoBehaviour {
             StartCoroutine(returnPan(returnAmount));
         }
     }
+
+    private void OnTriggerStay(Collider collision)
+    {
+        if (!panWithPlayer && !coroutine_running)
+        {
+            Debug.Log("NOOO2");
+            StartCoroutine(returnPan(returnAmount));
+        }
+    }
+
     //IEnumerator waitForPan()
     //{
     //    yield return new WaitForSeconds(5f);
@@ -119,6 +153,14 @@ public class FryingPanScript : MonoBehaviour {
         panRot = transform.rotation.eulerAngles;
         panGone = false;
         mousePoint.SetActive(false);
+        if (directionAmount < 0)
+        {
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().spatulaLeft.SetActive(true);
+        }
+        else if (directionAmount > 0)
+        {
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().spatulaRight.SetActive(true);
+        }
         coroutine_running = false;
         gameObject.SetActive(false);
     }
