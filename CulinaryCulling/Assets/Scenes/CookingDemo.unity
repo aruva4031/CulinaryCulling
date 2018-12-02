@@ -2178,7 +2178,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 74624066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0.8, z: -10}
+  m_LocalPosition: {x: -16.74, y: 0.8, z: -10}
   m_LocalScale: {x: 0.45576346, y: 0.45576346, z: 0.45576346}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72362,7 +72362,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 104
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!136 &1974755482
 CapsuleCollider:
@@ -72375,9 +72375,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 10
-  m_Height: 40
+  m_Height: 33.41
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.35, y: -0.5, z: 0}
 --- !u!4 &1974755483
 Transform:
   m_ObjectHideFlags: 0
@@ -72422,7 +72422,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ecfa1383e16ca418632914e6edfde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallingtime: 0
+  fallingtime: 3
+  playerTools:
+  - {fileID: 1265700382}
+  - {fileID: 283736230}
 --- !u!1 &1975062390
 GameObject:
   m_ObjectHideFlags: 0
