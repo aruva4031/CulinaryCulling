@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public float rotateAmount;
     public float rotateAngle;
     public float duration;
+	public float jumpforce;
 
     public bool rotateBack;
 
@@ -59,7 +60,9 @@ public class PlayerController : MonoBehaviour
         rotate = false;
         clicked = false;
         doubleclicked = false;
-        speed = 0.1f;
+		if (speed == 0f) {
+			speed = 0.1f;
+		}
         playerFreeze = false;
         //spatulaPos1= new Vector3(spatula.transform.position.x - 21.4f, spatula.transform.position.y + 2.5f, spatula.transform.position.z);
         //spatulaPos2 = spatula.transform.position;
@@ -142,7 +145,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space) && !playerJumps)
                 {
-                    rb.velocity = transform.up * 6f;
+                    rb.velocity = transform.up * jumpforce;
                     playerJumps = true;
                 }
             }

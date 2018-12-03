@@ -32,7 +32,7 @@ public class PlatformPassing : MonoBehaviour {
 		}
 		else if(other.tag == "killzone"){
 			//Code to restart
-			//this.GetComponent<BefriendEnemy>().playerDies();
+			this.GetComponent<BefriendEnemy>().playerDies();
 		}
 		if(other.tag == "upperLevel") {
 
