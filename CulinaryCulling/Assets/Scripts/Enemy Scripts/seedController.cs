@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class seedController : MonoBehaviour {
+public class seedController : Pumpkin {
 
 	public GameObject player;
 	// Use this for initialization
@@ -17,9 +17,17 @@ public class seedController : MonoBehaviour {
 
 	public void OnCollisionEnter(Collision col)
 	{
-		if(col.gameObject.tag == "Player")
+		if(beFriended == true)
+		{
+			if(col.gameObject.tag == "Enemy")
+			{
+				col.gameObject.GetComponent<EnemyAI>().health--;
+			}
+		}
+		else if(col.gameObject.tag == "Player")
 		{
 			//Damage Player
+			col.gameObject.GetComponent<BefriendEnemy>().health--;
 			Destroy(this.gameObject);
 		}	
 	}

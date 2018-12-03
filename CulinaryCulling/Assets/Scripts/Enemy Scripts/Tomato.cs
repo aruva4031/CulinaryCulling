@@ -16,7 +16,7 @@ public class Tomato : EnemyAI {
 	public bool canExpand = true;
 	public float coolDown;
 
-
+	public Transform target;
 
 
 
@@ -27,12 +27,17 @@ public class Tomato : EnemyAI {
 		strt = new Vector3 (transform.position.x -1, transform.position.y, transform.position.z);
 		nd = new Vector3 (transform.position.x + 1, transform.position.y, transform.position.z);
 		coolDown = 500;
-		transform.localScale = new Vector3(1,1,1);
+		//transform.localScale = new Vector3(1,1,1);
+		target = GameObject.Find("Player").transform;
 		//StartCoroutine(Expanding(coolDown));
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if(beFriended == true)
+		{
+
+		}
 		// if(grow)
 		// {
 		// 	coolDown--;
@@ -95,7 +100,22 @@ public class Tomato : EnemyAI {
 	// {
 
 	// }
-	void FixedUpdate()
+	public void OnCollisionEnter(Collision col)
+	{
+		if(beFriended == true)
+		{
+			if(col.gameObject.tag == "Enemy")
+			{
+				col.gameObject.GetComponent<EnemyAI>().health--;
+			}
+		}
+		else if(col.gameObject.tag == "Player")
+		{
+			//Damage Player
+			col.gameObject.GetComponent<BefriendEnemy>().health--;
+		}	
+	}
+	public void enemy()
 	{
 		if(isOnPlatform())
 		{
@@ -105,30 +125,23 @@ public class Tomato : EnemyAI {
 		{
 			move(this.gameObject, strt, nd, speed,facingLeft);
 		}
-		// if(grow && canExpand)
-		// {
-		// if(canExpand)
-		// {
-		// 	if(grow)
-		// 	{
-		// 		size = Mathf.SmoothDampAngle(size,2.5f, ref speed, 5.0f);
-		// 	}
-		// 	if(size > 3)
-		// 	{
-		// 		size = Mathf.SmoothDampAngle(size,1.0f, ref speed, 5.0f);
-		// 	}
-		// 	//size = Mathf.SmoothDampAngle(size, (grow) ? 2.5f : 1.0f, ref speed, 5.0f);
-		// 	transform.localScale = new Vector3(size,size,1);
-		// }
+	}
+	public void friend()
+	{
+		Vector3 offset = new Vector3(target.position.x-2, target.position.y, target.position.z);
+		this.transform.position = Vector3.MoveTowards(transform.position, offset, 0.5f);
+		move(this.gameObject,strt,nd,speed,facingLeft);
+	}
+	void FixedUpdate()
+	{
 		
-		
-			
-		// }
-		// else 
-		// {
-		// 	size = Mathf.SmoothDampAngle(size, 1f, ref speed, 5.0f);
-		// 	transform.localScale = new Vector3(size,size,1);
-		// 	speed = 0.5f;
-		// }
+		if(beFriended == true)
+		{
+			friend();
+			this.gameObject.tag = "Friend";
+		}
+		else{
+			enemy();
+		}
 	}
 }

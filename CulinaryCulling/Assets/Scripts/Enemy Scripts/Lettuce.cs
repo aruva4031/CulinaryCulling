@@ -21,16 +21,47 @@ public class Lettuce : EnemyAI {
 	
 	// Update is called once per frame
 	void Update () {
+		if(beFriended == true)
+		{
+			friend();
+		}
+		else{
+			enemy();
+		}
+		
+	}
+
+	public void enemy()
+	{
 		coolDown--;
 		if(coolDown <= 0)
 		{
 			Rotate();
 			coolDown = 50;
 		}
-		
 	}
 
-	
+	public void friend()
+	{
+		Rotate();
+		this.gameObject.tag = "Friend";
+	}
+
+	public void OnCollisionEnter(Collision col)
+	{
+		if(beFriended == true)
+		{
+			if(col.gameObject.tag == "Enemy")
+			{
+				col.gameObject.GetComponent<EnemyAI>().health--;
+			}
+		}
+		else if(col.gameObject.tag == "Player")
+		{
+			//Damage Player
+			col.gameObject.GetComponent<BefriendEnemy>().health--;
+		}	
+	}
 
 	public void Rotate()
 	{

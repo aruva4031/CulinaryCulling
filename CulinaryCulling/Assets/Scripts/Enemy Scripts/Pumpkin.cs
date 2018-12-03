@@ -30,11 +30,19 @@ public class Pumpkin : EnemyAI {
 		target = GameObject.Find("Player").transform;
 		inSight = false;
 		upperLevel = false;
+		health = 2;
 	}
 	
 	public void OnTriggerEnter(Collider col)
 	{
-		if(col.gameObject.tag == "Player")
+		if(beFriended == true)
+		{
+			if(col.gameObject.tag == "Enemy")
+			{
+				inSight = false;
+			}
+		}
+		else if(col.gameObject.tag == "Player")
 		{
 			inSight = true;
 		}
@@ -42,7 +50,14 @@ public class Pumpkin : EnemyAI {
 
 	public void OnTriggerExit(Collider col)
 	{
-		if(col.gameObject.tag == "Player")
+		if(beFriended == true)
+		{
+			if(col.gameObject.tag == "Enemy")
+			{
+				inSight = false;
+			}
+		}
+		else if(col.gameObject.tag == "Player")
 		{
 			inSight = false;
 		}
@@ -66,23 +81,14 @@ public class Pumpkin : EnemyAI {
 		if(beFriended == true)
 		{
 			friend();
+			this.gameObject.tag = "Friend";
+			this.GetComponent<BoxCollider>().enabled = false;
 		}
 		else
 		{
 			followPlayer(upperLevel);
 			enemy();
 		}
-		/***
-		if(befriended = true)
-		{
-			friend();
-		}
-		else
-		{
-			followPlayer();
-			enemy();
-		} */
-
 	}
 	public void enemy()
 	{
@@ -105,7 +111,8 @@ public class Pumpkin : EnemyAI {
 
 	public void friend()
 	{
-		//this.transform.position = new Vector3 (player.position.x - 1, player.transfrom.position.y,player.transfrom.position.z )
+		Vector3 offset = new Vector3(target.position.x-2, target.position.y, target.position.z);
+		this.transform.position = Vector3.MoveTowards(transform.position, offset, 0.5f);
 		if(inSight)
 		{
 			//transform.LookAt(target.position);

@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 135989929236460590}
   m_Layer: 0
   m_Name: Tomato
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,12 +104,15 @@ MonoBehaviour:
   strt: {x: 0, y: 0, z: 0}
   nd: {x: 0, y: 0, z: 0}
   beFriended: 0
+  followOffset: 0
+  highestTransitionLevel: 0
   platformLayer:
     serializedVersion: 2
     m_Bits: 256
   size: 0
   canExpand: 1
   coolDown: 0
+  target: {fileID: 0}
 --- !u!135 &135581647392489618
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -141,7 +144,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1525161887784012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.010787835}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -149,6 +152,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.36739, y: 3.69}
+  m_AnchoredPosition: {x: -22.85, y: -2.65}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

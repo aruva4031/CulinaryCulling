@@ -14,6 +14,8 @@ public class EnemyAI : MonoBehaviour {
 
 	public bool beFriended = false;
 
+	public int followOffset=0;
+
 	public enum OccilationFuntion {Sine, Cosine}
 
     public float highestTransitionLevel;

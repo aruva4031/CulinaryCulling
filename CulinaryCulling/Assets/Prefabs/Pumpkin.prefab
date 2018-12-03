@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 65863956677224708}
   m_Layer: 0
   m_Name: Pumpkin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1512424822518834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.82, y: 2.69, z: -0.026820287}
+  m_LocalPosition: {x: -29.089293, y: -2.4882412, z: -2}
   m_LocalScale: {x: 1.5797663, y: 0.6930648, z: 1}
   m_Children:
   - {fileID: 4124232840245488}
@@ -178,5 +178,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 5
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

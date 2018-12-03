@@ -111,6 +111,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fc08975fd48d84a8ceb4fe0ba47436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  speed: 0
+  strt: {x: 0, y: 0, z: 0}
+  nd: {x: 0, y: 0, z: 0}
+  beFriended: 0
+  followOffset: 0
+  highestTransitionLevel: 0
+  bulletSeed: {fileID: 0}
+  mouth: {fileID: 4124232840245488, guid: 1bfef823579623e4c8e41be2458f0dfe, type: 2}
+  seedPrefab: {fileID: 54102213480888692}
+  inSight: 0
+  coolDown: 100
+  canShoot: 1
+  upperLevel: 0
+  bEnemy: {fileID: 0}
   player: {fileID: 0}
 --- !u!136 &136497557933075570
 CapsuleCollider:
