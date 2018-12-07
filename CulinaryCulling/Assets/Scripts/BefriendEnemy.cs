@@ -28,7 +28,7 @@ public class BefriendEnemy : MonoBehaviour {
     public List<GameObject> combine;
     public bool chooseToCook;
 
-    public int health;
+    public float health;
     public UnityEngine.UI.Text healthDisplay;
 
     // Use this for initialization
@@ -55,7 +55,7 @@ public class BefriendEnemy : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        healthDisplay.text = "Health: " + health;
+        healthDisplay.text = "Health: " + (int)health;
         if (Input.GetKeyDown(KeyCode.E)&&netWithPlayer)
         {
             //Debug.Log("E");
@@ -307,7 +307,7 @@ public class BefriendEnemy : MonoBehaviour {
     public void playerDies()
     {
         health = 0;
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("CookingDemo");
     }
 
     //private void OnTriggerEnter(Collider collision)
@@ -323,7 +323,7 @@ public class BefriendEnemy : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            health--;
+            health-=0.2f;
         }
     }
 }

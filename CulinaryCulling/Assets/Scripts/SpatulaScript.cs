@@ -16,19 +16,19 @@ public class SpatulaScript : MonoBehaviour {
 		
 	}
 
-    //public void OnCollisionEnter(Collision collision)
-    //{
-    //    Debug.Log("IN3");
-    //    if (collision.gameObject.GetComponent<Collider>().tag == "Enemy")
-    //    {
-    //        Debug.Log("IN4");
-    //        //if (collision.gameObject.GetComponent<EnemyAI>().health <= 0)
-    //        //{
-    //        //    Destroy(collision.gameObject);
-    //        //}
-    //        collision.gameObject.GetComponent<EnemyAI>().health-=1;
-    //    }
-    //}
+    public void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("IN3");
+        if (collision.gameObject.GetComponent<Collider>().tag == "Enemy")
+        {
+            Debug.Log("IN4");
+            //if (collision.gameObject.GetComponent<EnemyAI>().health <= 0)
+            //{
+            //    Destroy(collision.gameObject);
+            //}
+            collision.gameObject.GetComponent<EnemyAI>().health -= 1;
+        }
+    }
 
     public void OnTriggerEnter(Collider collision)
     {
